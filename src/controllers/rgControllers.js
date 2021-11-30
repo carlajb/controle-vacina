@@ -16,7 +16,7 @@ const createRgVax = async (req, res) =>{
     }
 } 
 
-const getAllDoctors = async (req, res) =>{
+const getAllVaccinated = async (req, res) =>{
     const vaccinated = req.query.vaccinated
     try{
         const where = vaccinated ? {where: {vaccinated}}: {}
@@ -32,6 +32,21 @@ const getAllDoctors = async (req, res) =>{
     }
 }
 
+const getVaccinated = async (req, res ) =>{
+    const vaccinatedId = req.params.id
+  try {
+    const rgvax = await Registration.findOne({
+        where: { id: vaccinatedId } 
+    })
+    if (rgvax){
+        res.status(200).send(rgvax)
+    } else {
+        res.status(404).send({message: `vacina de id ${vaccinatedId} nao existe`})
+          }
+   }catch (error){
+    messageError(res, error)
+   }
+}
 
 
 
@@ -40,5 +55,6 @@ const getAllDoctors = async (req, res) =>{
 
 module.exports = {
     createRgVax,
-    getAllDoctors
+    getAllVaccinated,
+    getVaccinated 
 }
