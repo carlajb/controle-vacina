@@ -1,8 +1,7 @@
 const express = require("express");
 const app = express();
-
-const index = require("./router/index")
-const rgvax = require("./router/rgvax")
+const index = require("./router/index");
+const rgvax = require("./router/rgvax");
 
 //require("./models/Registration")
 
@@ -18,6 +17,6 @@ app.use(function (req, res, next) {
     next();
   });
 
-    app.use("/rgvax", rgvax)
+    app.use("/vaccines", rgvax)
     app.use("/", index);
     module.exports = app;
