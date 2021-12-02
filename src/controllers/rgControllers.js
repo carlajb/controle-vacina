@@ -55,9 +55,9 @@ const updateVaccinated = async (req, res) =>{
     try{
         const updateRows = await Registration.update ({vaccinated}, {where: {id: vaccinatedId }})
         if (updateRows && updateRows [0] > 0){
-            res.status(200).send({ message: `${updateRows[0]} voce ja foi imunizado com esta vacina`})
+            res.status(200).send({ message: `${updateRows[0]} consta imunização`})
         }else{
-            res.status(404).send({message: `vacina ${vaccinatedId} nao consta como consumida`})
+            res.status(404).send({message: `${vaccinatedId} não consta imunização`})
         }
     }catch (error){
         messageError(res, error)
