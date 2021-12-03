@@ -52,10 +52,12 @@ const getVaccinated = async (req, res ) =>{
 const updateVaccinated = async (req, res) =>{
     const vaccinatedId = req.params.id
     const vaccinated = req.body.vaccinated
+    
     try{
         const updateRows = await Registration.update ({vaccinated}, {where: {id: vaccinatedId }})
+        console.log(updateRows[0]);
         if (updateRows && updateRows [0] > 0){
-            res.status(200).send({ message: `${updateRows[0]} consta imunização`})
+            res.status(200).send({ message: `${updateRows [0]} consta imunização`})
         }else{
             res.status(404).send({message: `${vaccinatedId} não consta imunização`})
         }
@@ -65,7 +67,19 @@ const updateVaccinated = async (req, res) =>{
     }
 }
 
-
+const deleteVaccinated = async (req, res) => {
+    const vaccinatedId = req.params.id
+    try {
+        const rowDeleted = await Registration.destroy( { where: { id: vaccinatedId }})
+        if (rowDeleted){
+            res.status(200).send( { message: `${rowDeleted} vacina excluida com sucesso`} )
+        } else {
+            res.status(404).send({ message: `vacina com o id ${vaccinatedId} não encontrada` })
+        }
+    } catch(error){
+        messageError(res, error)
+    }
+}
 
 
 
@@ -74,5 +88,6 @@ module.exports = {
     createVaccinated,
     getAllVaccinated,
     getVaccinated,
-    updateVaccinated 
+    updateVaccinated,
+    deleteVaccinated
 }
