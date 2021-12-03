@@ -46,7 +46,7 @@ function fillData(list) {
         buttonVac.addEventListener("click", function () {
           fetch(`${URL}/${element.id}/vaccines`, {
             method: "PATCH",
-            body: JSON.stringify({ vaccines: !element.vaccines }),
+            body: JSON.stringify({ vaccinated: !element.vaccinated }),
             headers: {
               "Content-Type": "application/json",
             },
@@ -58,7 +58,7 @@ function fillData(list) {
             .catch((erro) => console.error(erro));
         });
         let favoriteIcon = document.createElement("i");
-        favoriteIcon.className = element.vaccines ? "fas fa-check-circle" : "fas fa-times-circle";
+        favoriteIcon.className = element.vaccinated ? "fas fa-check-circle" : "fas fa-times-circle";
         buttonVac.appendChild(favoriteIcon);
         itemLinhaVaccinated.appendChild(buttonVac);
     
