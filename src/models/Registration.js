@@ -5,7 +5,7 @@ const {database} = require("../db");
 
 const RgVaccine = database.define("RgVaccine", {
     id: {
-        type: DataTypes.BIGINT,
+        type: DataTypes.BIGINT, 
         autoIncrement: true,
         allowNull: false,
         primaryKey: true,
