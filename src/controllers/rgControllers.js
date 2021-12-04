@@ -11,6 +11,7 @@ const createVaccinated = async (req, res) =>{
         const rgvax = await Registration.create({name, expected_date, vaccinated})
         console.log(`Vacina ${rgvax.name} foi cadastrada com sucesso`)
         res.status(201).send(rgvax)
+        order:[['id', 'DESC']]
     }catch (error) {
         messageError(res, error)
 
@@ -19,13 +20,18 @@ const createVaccinated = async (req, res) =>{
 
 const getAllVaccinated = async (req, res) =>{
     const vaccinated = req.query.vaccinated
+    
     try{
-        const where = vaccinated ? {where: {vaccinated}}: {}
+        const where = vaccinated ? {where: {vaccinated}}: { order:[['id', 'ASC']]}
         const rgvax = await Registration.findAll(where)
-        if (rgvax && rgvax.length >0) {
+        if (rgvax && rgvax.length >0)  {
+           
             res.status(200).send(rgvax)
+          
+            
         }else {
             res.status(204).send()
+            
         }
     }catch (error){
         messageError(res, error)
@@ -55,7 +61,8 @@ const updateVaccinated = async (req, res) =>{
     
     try{
         const updateRows = await Registration.update ({vaccinated}, {where: {id: vaccinatedId }})
-        //console.log(updateRows[0] > 0);
+        
+        console.log(updateRows[0] > 0);
         if (updateRows && updateRows [0] > 0){
             res.status(200).send({ message: `${updateRows [0]} consta imunização`})
         }else{
