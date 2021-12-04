@@ -1,0 +1,158 @@
+{
+	"info": {
+		"_postman_id": "77d29be0-9fdf-441e-ab31-a0a70e71c6f2",
+		"name": "Vaccine record",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST/vaccines",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Covaxin\",\r\n    \"expected_date\": \"10/10/2021\",\r\n    \"vaccinated\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://controle-de-vacina.herokuapp.com/vaccines",
+					"protocol": "https",
+					"host": [
+						"controle-de-vacina",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"vaccines"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET/vaccines",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://controle-de-vacina.herokuapp.com/vaccines",
+					"protocol": "https",
+					"host": [
+						"controle-de-vacina",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"vaccines"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET_POR_ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://controle-de-vacina.herokuapp.com/vaccines/:id",
+					"protocol": "https",
+					"host": [
+						"controle-de-vacina",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"vaccines",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"vaccinated\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://controle-de-vacina.herokuapp.com/vaccines/:id/vaccines",
+					"protocol": "https",
+					"host": [
+						"controle-de-vacina",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"vaccines",
+						":id",
+						"vaccines"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete/vaccines",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://controle-de-vacina.herokuapp.com/vaccines/:id",
+					"protocol": "https",
+					"host": [
+						"controle-de-vacina",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"vaccines",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "9"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
